@@ -5,17 +5,17 @@
 export const environment = {
   production: false,
   backend: {
-    server: 'http://localhost:3000'
+    server: "http://172.16.4.58:3000"
   },
   frontend: {
-    server: 'http://localhost:4200/'
+    server: "http://localhost:4200/"
   },
   payment: {
-    url: 'https://secure.payu.in/_payment',
+    url: "https://secure.payu.in/_payment",
     accomodation: 100,
     transcationFee: 0.04,
-    productInfo:'GyanMitra19',
-    key: 'AFqk4w'
+    productInfo: "GyanMitra19",
+    key: "AFqk4w"
   }
 };
 
