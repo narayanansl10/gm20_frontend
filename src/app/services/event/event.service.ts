@@ -1,22 +1,41 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
-import { map, min } from 'rxjs/operators';
-import { AppService } from '../app/app.service';
-import { RequestOptions } from '@angular/http';
-
-
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { Router } from "@angular/router";
+import { Observable } from "rxjs";
+import { map, min } from "rxjs/operators";
+import { AppService } from "../app/app.service";
+import { RequestOptions } from "@angular/http";
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: "root"
 })
-
 export class EventService {
-  readonly baseUrl = 'event/';
-  constructor(private http: HttpClient, private app: AppService) { }
+  readonly baseUrl = "event/";
+  constructor(private http: HttpClient, private app: AppService) {}
 
-  createEvent(title: String, category_id: String, department_id: String, description: String, image_name: String, rules: String, start_time: String, end_time: String, event_date: String, prelims: String, round_1: String, round_2: String, finals: String, min_members: Number, max_members: Number, max_limit: Number, contact_email: String, venue: String, amount: Number, allow_gender_mixing: Boolean,resourse_person: String) {
+  createEvent(
+    title: String,
+    category_id: String,
+    department_id: String,
+    description: String,
+    image_name: String,
+    rules: String,
+    start_time: String,
+    end_time: String,
+    event_date: String,
+    prelims: String,
+    round_1: String,
+    round_2: String,
+    finals: String,
+    min_members: Number,
+    max_members: Number,
+    max_limit: Number,
+    contact_email: String,
+    venue: String,
+    amount: Number,
+    allow_gender_mixing: Boolean,
+    resourse_person: String
+  ) {
     const body = {
       title: title,
       category_id: category_id,
@@ -41,50 +60,82 @@ export class EventService {
       resourse_person: resourse_person
     };
     const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return this.http.post(this.app.getUrl(this.baseUrl + 'create'), body).pipe(map(res => res, { 'headers': headers }));
+    headers.append("Content-Type", "application/json");
+    return this.http
+      .post(this.app.getUrl(this.baseUrl + "create"), body)
+      .pipe(map(res => res, { headers: headers }));
   }
 
   uploadFile(formData: FormData) {
     let headers = new Headers();
-    headers.append('Content-Type', 'multipart/form-data');
-    return this.http.post(this.app.getUrl(this.baseUrl) + 'uploadImage/'+formData.get('_id'), formData);
+    headers.append("Content-Type", "multipart/form-data");
+    return this.http.post(
+      this.app.getUrl(this.baseUrl) + "uploadImage/" + formData.get("_id"),
+      formData
+    );
   }
 
   readAllEvents() {
     const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return this.http.get(this.app.getUrl(this.baseUrl) + 'all');
+    headers.append("Content-Type", "application/json");
+    return this.http.get(this.app.getUrl(this.baseUrl) + "all");
   }
 
-  readWithEventCategory(event: String, page: number){
+  readWithEventCategory(event: String, page: number) {
     const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return this.http.get(this.app.getUrl(this.baseUrl) + event+'/'+page);
+    headers.append("Content-Type", "application/json");
+    return this.http.get(this.app.getUrl(this.baseUrl) + event + "/" + page);
   }
 
   readEvent(page: any) {
     const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return this.http.get(this.app.getUrl(this.baseUrl) + '?page=' + page);
+    headers.append("Content-Type", "application/json");
+    return this.http.get(this.app.getUrl(this.baseUrl) + "?page=" + page);
   }
 
-  readWithPage(page: any){
+  readWithPage(page: any) {
     const headers = new Headers();
-    return this.http.get(this.app.getUrl(this.baseUrl) + 'all'+'/'+page);
+    return this.http.get(this.app.getUrl(this.baseUrl) + "all" + "/" + page);
   }
 
-  readWithPageAndDepartment(type: any, department:any, page:any){
+  readWithPageAndDepartment(type: any, department: any, page: any) {
     const headers = new Headers();
-    return this.http.get(this.app.getUrl(this.baseUrl) +type+'/'+department+'/'+page);
+    return this.http.get(
+      this.app.getUrl(this.baseUrl) + type + "/" + department + "/" + page
+    );
   }
 
-  readWithPageAndDepartmentId(type: any, department_id:any){
+  readWithPageAndDepartmentId(type: any, department_id: any) {
     const headers = new Headers();
-    return this.http.get(this.app.getUrl(this.baseUrl)+'event/' +type+'/id/'+department_id);
+    return this.http.get(
+      this.app.getUrl(this.baseUrl) + "event/" + type + "/id/" + department_id
+    );
   }
 
-  updateEvent(id: String, title: String, category_id: String, department_id: String, description: String, image_name: String, rules: String, start_time: String, end_time: String, event_date: String, prelims: String, round_1: String, round_2: String, finals: String, min_members: Number, max_members: Number, max_limit: Number, contact_email: String, venue: String, amount: Number, allow_gender_mixing: Boolean,resource_person:String) {
+  updateEvent(
+    id: String,
+    title: String,
+    category_id: String,
+    department_id: String,
+    description: String,
+    image_name: String,
+    rules: String,
+    start_time: String,
+    end_time: String,
+    event_date: String,
+    prelims: String,
+    round_1: String,
+    round_2: String,
+    finals: String,
+    min_members: Number,
+    max_members: Number,
+    max_limit: Number,
+    contact_email: String,
+    venue: String,
+    amount: Number,
+    allow_gender_mixing: Boolean,
+    resource_person: String
+  ) {
     const body = {
       title: title,
       category_id: category_id,
@@ -108,13 +159,22 @@ export class EventService {
       resource_person: resource_person
     };
     const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return this.http.post(this.app.getUrl(this.baseUrl +"update/"+ `${id}`), body).pipe(map(res => res, { 'headers': headers }));
+    headers.append("Content-Type", "application/json");
+    return this.http
+      .post(this.app.getUrl(this.baseUrl + "update/" + `${id}`), body)
+      .pipe(map(res => res, { headers: headers }));
   }
   deleteEvent(id: String) {
     const headers = new Headers();
-    headers.append('Content-Type', 'application/json');
-    return this.http.post(this.app.getUrl(this.baseUrl +"delete/"+ `${id}`),{}).pipe(map(res => res, { 'headers': headers }));
+    headers.append("Content-Type", "application/json");
+    return this.http
+      .post(this.app.getUrl(this.baseUrl + "delete/" + `${id}`), {})
+      .pipe(map(res => res, { headers: headers }));
   }
-
+  //Get Workshop added by Siddeshwar and Sivasanjeevi on 21/12/19 4:30pm (Last Service of 2019)
+  getWorkshops() {
+    const headers = new Headers();
+    headers.append("Content-Type", "application/json");
+    return this.http.get<any>(this.app.getUrl(this.baseUrl + "getWorkshops/"));
+  }
 }

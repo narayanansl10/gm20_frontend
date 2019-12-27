@@ -5,7 +5,7 @@
 export const environment = {
   production: false,
   backend: {
-    server: "http://172.16.4.58:3000"
+    server: "http://localhost:3000"
   },
   frontend: {
     server: "http://localhost:4200/"
