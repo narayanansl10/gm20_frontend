@@ -19,14 +19,14 @@ export class WorkshopsComponent implements OnInit {
   workshops: Array<any> = [];
   statuses: any = {};
   departments: Array<any> = [];
-  searchText: String =
-    "Computer Science and Engineering and Information Technology";
+  searchText: String = "";
   currentUserId: string;
   statusesLoaded: Boolean = false;
   currentPage: any = 1;
   registrationEnabled: boolean = true;
   paymentForm: FormGroup;
   workshopEnabled: Boolean = false;
+  allWorkshops: any;
   constructor(
     private eventService: EventService,
     private eventRegistrationService: EventRegistrationService,
@@ -36,15 +36,25 @@ export class WorkshopsComponent implements OnInit {
     private userService: UserService,
     private configService: ConfigurationsService
   ) {
-    this.currentPage = 1;
-    this.eventService
-      .readWithPageAndDepartment("Workshop", this.searchText, 1)
-      .subscribe((response: any) => {
-        this.workshops = response;
-        if (this.currentUserId != "") {
-          this.checkEventRegistrations();
-        }
-      });
+    /**Following commented by Siddeshwar on 28/12/19 */
+    //this.currentPage = 1;
+    // this.eventService
+    //   .readWithPageAndDepartment("Workshop", this.searchText, 1)
+    //   .subscribe((response: any) => {
+    //     this.workshops = response;
+    //     if (this.currentUserId != "") {
+    //       this.checkEventRegistrations();
+    //     }
+    //   });
+
+    /**This added instead by Siddeshwar, a service that fetches all workshops */
+    this.eventService.getWorkshops().subscribe(response => {
+      this.workshops = response;
+      if (this.currentUserId != "") {
+        this.checkEventRegistrations();
+      }
+    });
+
     configService.getConfig("Registration").subscribe((response: any) => {
       if (response.error) {
         this.registrationEnabled = false;
@@ -70,11 +80,17 @@ export class WorkshopsComponent implements OnInit {
     this.currentPage = 1;
     this.user = JSON.parse(localStorage.getItem("user"));
     if (this.currentUserId != "") {
-      this.eventService
-        .readWithPageAndDepartment("Workshop", "All", 1)
-        .subscribe((response: any) => {
-          this.workshops = response;
-        });
+      /**Following commented by Siddeshwar on 28/12/19 */
+      // this.eventService
+      //   .readWithPageAndDepartment("Workshop", "All", 1)
+      //   .subscribe((response: any) => {
+      //     this.workshops = response;
+      //     console.log(this.workshops);
+      //   });
+      /**This added instead by Siddeshwar, a service that fetches all workshops */
+      this.eventService.getWorkshops().subscribe(response => {
+        this.workshops = response;
+      });
     }
     if (this.user != null) {
       this.currentUserId = this.user.id;
@@ -84,7 +100,7 @@ export class WorkshopsComponent implements OnInit {
       });
     }
     this.getRegistrations();
-    this.loadFull(this.currentPage);
+    //this.loadFull(this.currentPage);
   }
 
   getCurrentUser() {

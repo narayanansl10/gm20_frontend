@@ -1,10 +1,9 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform } from "@angular/core";
 
 @Pipe({
-  name: 'filterEventsBasedOnDepartment'
+  name: "filterEventsBasedOnDepartment"
 })
 export class FilterEventsBasedOnDepartmentPipe implements PipeTransform {
-
   transform(items: any[], searchText: string): any[] {
     if (!items) return [];
     if (!searchText) return items;
@@ -13,11 +12,9 @@ export class FilterEventsBasedOnDepartmentPipe implements PipeTransform {
     return items.filter(it => {
       if (it.department_id.name != undefined) {
         return it.department_id.name.toLowerCase().includes(searchText);
-      }
-      else {
-        return true
+      } else {
+        return true;
       }
     });
   }
-
 }

@@ -91,6 +91,7 @@ import { ProbsComponent } from "./component/admin/probs/probs.component";
 import { ProblemsArisedComponent } from "./component/admin/problems-arised/problems-arised.component";
 import { ScheduleComponent } from "./component/user/schedule/schedule.component";
 import { EventScheduleComponent } from "./component/user/event-schedule/event-schedule.component";
+import { FilterEventsBasedOnTitlePipe } from './pipes/filter-events-based-on-title.pipe';
 /////////////////////////////////////////////////////////////////
 
 @NgModule({
@@ -154,7 +155,8 @@ import { EventScheduleComponent } from "./component/user/event-schedule/event-sc
     ProbsComponent,
     ProblemsArisedComponent,
     ScheduleComponent,
-    EventScheduleComponent
+    EventScheduleComponent,
+    FilterEventsBasedOnTitlePipe
   ],
   imports: [
     BrowserModule,

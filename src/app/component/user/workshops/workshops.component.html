@@ -5,8 +5,16 @@
       <span class="content-header-left h3 col-md-3 col-3 mb-3">
         <span class="content-header-title">Workshops </span>
       </span>
-      <span class="content-header-left col-md-3 col-3 mb-3">
-        <select
+      <span class="content-header-left col-md-5 col-5 mb-5">
+        <div class="form-group">
+          <input
+            type="text"
+            class="form-control round"
+            placeholder="Search"
+            [(ngModel)]="searchText"
+          />
+        </div>
+        <!-- <select
           id="deptSelect"
           (click)="filter()"
           [(ngModel)]="searchText"
@@ -19,7 +27,7 @@
           >
             {{ dept.name }}
           </option>
-        </select>
+        </select> -->
       </span>
       <!-- Home-Workshop removed by Siddeshwar and Sivasanjeevi on 21/12/19, 11:30am -->
       <!-- <span class="content-header-right col-md-3 col-3">
@@ -35,7 +43,8 @@
           </div>
         </div>
       </span> -->
-      <span class="content-header-right col-md-3 col-3 offset-3">
+      <!-- Pagination commented by Siddeshwar on 27/12/19 -->
+      <!-- <span class="content-header-right col-md-3 col-3 offset-3">
         <div class="row float-right white">
           <span *ngIf="this.currentPage != 1">
             <span class="btn btn-sm btn-info" (click)="previousPage()">
@@ -45,7 +54,7 @@
           &nbsp; Page {{ currentPage }} &nbsp;
           <span class="btn btn-sm btn-info" (click)="nextPage()"> &gt; </span>
         </div>
-      </span>
+      </span> -->
     </div>
   </div>
   <br />
@@ -55,8 +64,7 @@
         <div
           class="col-lg-4 col-md-4 col-sm-12 col-xs-12"
           *ngFor="
-            let workshop of workshops
-              | filterEventsBasedOnDepartment: searchText
+            let workshop of workshops | filterEventsBasedOnTitle: searchText
           "
         >
           <div class="card pull-up">
