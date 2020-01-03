@@ -13,7 +13,7 @@ export class FilterEventsBasedOnTitlePipe implements PipeTransform {
       if (it.title != undefined) {
         return it.title.toLowerCase().includes(searchText);
       } else {
-        return true;
+        return false;
       }
     });
   }

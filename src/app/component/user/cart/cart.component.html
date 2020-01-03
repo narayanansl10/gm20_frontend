@@ -75,16 +75,18 @@
       <input type="hidden" name="firstname" value="{{ user.name }}" />
       <input type="hidden" name="email" value="{{ user.email_id }}" />
       <input type="hidden" name="phone" value="{{ user.mobile_number }}" />
+      <!-- Success and Failure Routes to be changed -->
       <input
         type="hidden"
         name="surl"
-        value="http://www.gyanmitra19.mepcoeng.ac.in/payment/success"
+        value="http://localhost:3000/payment/success"
       />
       <input
         type="hidden"
         name="furl"
-        value="http://www.gyanmitra19.mepcoeng.ac.in/payment/failure"
+        value="http://localhost:3000/payment/failure"
       />
+      <!-- Success and Failure Routes to be changed -->
       <input type="hidden" name="hash" value="{{ hashString }}" />
     </form>
     <div

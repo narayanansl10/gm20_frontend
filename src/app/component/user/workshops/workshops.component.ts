@@ -87,6 +87,7 @@ export class WorkshopsComponent implements OnInit {
       //     this.workshops = response;
       //     console.log(this.workshops);
       //   });
+
       /**This added instead by Siddeshwar, a service that fetches all workshops */
       this.eventService.getWorkshops().subscribe(response => {
         this.workshops = response;
