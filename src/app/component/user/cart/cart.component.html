@@ -318,10 +318,9 @@
               <div class="card-body">
                 <h3 class="card-title">
                   Event - {{ event.event_id.title }}
-                  <span
+                  <!-- <span
                     class="card-title activator grey-text text-darken-4 float-right"
-                    ><i class="fas fa-ellipsis-v right"></i
-                  ></span>
+                    ><i class="fas fa-ellipsis-v right"></i></span> -->
                 </h3>
                 <h6 class="card-subtitle text-muted">
                   Department of {{ event.event_id.department_id.name }}
@@ -334,6 +333,11 @@
                 <hr />
               </div>
               <div class="card-body">
+                <h4>Timing</h4>
+                Date :
+                {{ event.event_id.event_date | date }}
+                {{ event.event_id.start_time }} -
+                {{ event.event_id.end_time }}
                 Contact
                 <p class="card-text">
                   <a href="mailto:{{ event.event_id.contact_email }}">{{
@@ -353,13 +357,13 @@
                   Remove from Cart
                 </button>
               </div>
-              <div class="card-reveal">
+              <!-- <div class="card-reveal">
                 <h4>Timing</h4>
                 <i class="fas fa-times float-right"></i> Date :
                 {{ event.event_id.event_date | date }}
                 {{ event.event_id.start_time }} -
                 {{ event.event_id.end_time }}
-              </div>
+              </div> -->
             </div>
           </div>
         </div>
