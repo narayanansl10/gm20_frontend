@@ -37,8 +37,8 @@ export class TeamRegisterComponent implements OnInit {
   createForm() {
     this.teamRegisterForm = this.formbuilder.group({
       _id: '',
-      name: ['', Validators.required]
-      //collegeMates:[this.college_mates]
+      name: ['', Validators.required],
+      collegeMates:[this.college_mates]
     });
     this.Submitted = false;
   }
