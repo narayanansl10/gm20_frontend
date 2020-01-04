@@ -122,6 +122,7 @@ export class EventsComponent implements OnInit {
         });
     }
     this.deptService.readDepartment(0).subscribe((response: any) => {
+      response.pop();
       this.departments = response;
     });
   }
