@@ -31,7 +31,7 @@ export class LoginComponent implements OnInit {
   //The action performed After the Button is Pressed
   onSubmit(values: any) {
     this.submitted=true;
-    this.Button="Checking......."
+    this.Button="Login"
     if(this.loginForm.valid){
       const email_id = this.loginForm.value.email_id;
       const password = this.loginForm.value.password;
