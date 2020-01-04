@@ -46,13 +46,13 @@
               >
                 Online
               </button>
-              <button
+              <!-- <button
                 class="btn btn-bg-gradient-x-blue-cyan border-white border-2  float-right"
                 data-toggle="modal"
                 data-target="#DDModal"
               >
                 Pay Through DD
-              </button>
+              </button> -->
             </ng-template>
           </ng-template>
         </span>
@@ -158,7 +158,7 @@
           <div class="modal-body">
             <strong
               >Confirming your cart would freeze your event participation and
-              you won't be able to add/remove any partiicpation. Are you sure
+              you won't be able to add/remove any participation. Are you sure
               you want to confirm your cart?</strong
             >
           </div>
@@ -320,9 +320,10 @@
               <div class="card-body">
                 <h3 class="card-title">
                   Event - {{ event.event_id.title }}
-                  <!-- <span
+                  <span
                     class="card-title activator grey-text text-darken-4 float-right"
-                    ><i class="fas fa-ellipsis-v right"></i></span> -->
+                    ><i class="fas fa-ellipsis-v right"></i
+                  ></span>
                 </h3>
                 <h6 class="card-subtitle text-muted">
                   Department of {{ event.event_id.department_id.name }}
@@ -368,7 +369,6 @@
                 {{ event.event_id.start_time }} -
                 {{ event.event_id.end_time }}
               </div>
-              -->
             </div>
           </div>
         </div>
