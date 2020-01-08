@@ -57,7 +57,9 @@
       </span> -->
     </div>
   </div>
-  <br />
+  <div class = "alert alert-warning col-10 offset-1">
+    <i class="fas fa-cart-arrow-down"> </i> &nbsp; Early bird offer: Discounted Workshop and Event prices.
+  </div>
   <div class="content-body">
     <section id="content-types">
       <div class="row match-height">
@@ -89,7 +91,7 @@
 
             <div class="card-body">
               <p class="card-text">
-                Registration Fee: {{ workshop.amount }} Rs.
+                Registration Fee: <span class = "strikethrough">&#x20B9;{{ workshop.amount + 100 }}</span>&nbsp;<span class = "amount">&#x20B9;{{ workshop.amount }}</span>
               </p>
               Contact
               <p class="card-text">
