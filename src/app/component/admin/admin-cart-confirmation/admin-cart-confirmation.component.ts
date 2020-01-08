@@ -25,7 +25,7 @@ export class AdminCartConfirmationComponent implements OnInit {
     this.loadEvents(user_id);
     this.loadWorkshops(user_id);
     this.selectedUser = user_id;
-    this.ddImage = "http://gyanmitra20.mepcoeng.ac.in/assets/images/cart/" + dd_image;
+    this.ddImage = "http://www.gyanmitra20.mepcoeng.ac.in/assets/images/cart/" + dd_image;
   }
 
   confirmPayment() {
