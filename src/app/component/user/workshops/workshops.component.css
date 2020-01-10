@@ -4,6 +4,7 @@
 }
 
 .alert{
+    font-size: larger;
     letter-spacing: 3px;
     text-align: center;
     background-color: rgba(250, 177, 41, 0.623);
