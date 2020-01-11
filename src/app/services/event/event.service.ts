@@ -57,7 +57,7 @@ export class EventService {
       venue: venue,
       amount: amount,
       allow_gender_mixing: allow_gender_mixing,
-      resourse_person: resourse_person
+      resource_person: resourse_person
     };
     const headers = new Headers();
     headers.append("Content-Type", "application/json");

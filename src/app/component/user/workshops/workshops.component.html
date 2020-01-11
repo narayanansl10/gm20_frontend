@@ -57,8 +57,9 @@
       </span> -->
     </div>
   </div>
-  <div class = "alert alert-warning col-10 offset-1">
-    <i class="fas fa-cart-arrow-down"> </i> &nbsp; Early bird offer: Discounted Workshop and Event prices. (only upto January 18 2020)
+  <div class="alert alert-warning col-10 offset-1">
+    <i class="fas fa-cart-arrow-down"> </i> &nbsp; Early bird offer: Discounted
+    Workshop and Event prices. (only upto January 18 2020)
   </div>
   <div class="content-body">
     <section id="content-types">
@@ -91,7 +92,10 @@
 
             <div class="card-body">
               <p class="card-text">
-                Registration Fee: <span class = "strikethrough">&#x20B9;{{ workshop.amount + 100 }}</span>&nbsp;<span class = "amount">&#x20B9;{{ workshop.amount }}</span>
+                Registration Fee:
+                <span class="strikethrough"
+                  >&#x20B9;{{ workshop.amount + 100 }}</span
+                >&nbsp;<span class="amount">&#x20B9;{{ workshop.amount }}</span>
               </p>
               Contact
               <p class="card-text">
@@ -111,8 +115,21 @@
               </ul>
               <hr />
               -->
-              <span class="card-title grey-text text-darken-4"
-                >Timing<i class="fas fa-times float-right"></i></span>
+              <div>
+                <span class="card-title grey-text text-darken-4"
+                  >Timing<i class="fas fa-times float-right"></i
+                ></span>
+                Date : {{ workshop.event_date | date }}
+                {{ workshop.start_time }} -
+                {{ workshop.end_time }}
+              </div>
+              <div style="padding-top:5%" *ngIf="workshop.resource_person">
+                <span class="card-title grey-text text-darken-4"
+                  >Resource Persons</span
+                >
+                {{ workshop.resource_person }}
+              </div>
+
               <!-- <ul>
                 <li *ngFor="let desc of workshop.description | rulesTransform">
                   {{ desc }}
@@ -120,9 +137,6 @@
               </ul> -->
               <!-- <hr />
               <h4>Timing</h4> -->
-              Date : {{ workshop.event_date | date }}
-              {{ workshop.start_time }} -
-              {{ workshop.end_time }}
             </div>
             <div
               class="card-footer border-top-blue-grey border-top-lighten-5 text-muted"
