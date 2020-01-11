@@ -3,7 +3,7 @@
     <div class="content-wrapper-before"></div>
     <div class="content-header row">
       <span class="content-header-left h3 col-md-3 col-3 mb-3">
-        <span class="content-header-title">Workshops </span>
+        <span class="content-header-title">Workshops (Jan 24)</span>
       </span>
       <span class="content-header-left col-md-5 col-5 mb-5">
         <div class="form-group">
@@ -89,7 +89,6 @@
                 workshop.image_name
               }}"
             />
-
             <div class="card-body">
               <p class="card-text">
                 Registration Fee:
@@ -97,11 +96,9 @@
                   >&#x20B9;{{ workshop.amount + 100 }}</span
                 >&nbsp;<span class="amount">&#x20B9;{{ workshop.amount }}</span>
               </p>
-              Contact
-              <p class="card-text">
-                <a href="mailto:{{ workshop.contact_email }}">{{
-                  workshop.contact_email
-                }}</a>
+              <p class="card-text" *ngIf="workshop.resource_person">
+                    Resource Persons :
+                  {{ workshop.resource_person }}
               </p>
             </div>
             <div class="card-reveal">
@@ -123,13 +120,6 @@
                 {{ workshop.start_time }} -
                 {{ workshop.end_time }}
               </div>
-              <div style="padding-top:5%" *ngIf="workshop.resource_person">
-                <span class="card-title grey-text text-darken-4"
-                  >Resource Persons</span
-                >
-                {{ workshop.resource_person }}
-              </div>
-
               <!-- <ul>
                 <li *ngFor="let desc of workshop.description | rulesTransform">
                   {{ desc }}
