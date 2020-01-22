@@ -57,10 +57,10 @@
       </span> -->
     </div>
   </div>
-  <div class="alert alert-warning col-10 offset-1">
+  <!-- <div class="alert alert-warning col-10 offset-1">
     <i class="fas fa-cart-arrow-down"> </i> &nbsp; Early bird offer: Discounted
-    Workshop and Event prices. (only upto January 18 2020)
-  </div>
+    Workshop and Event prices. (only upto January 20 2020)
+  </div> -->
   <div class="content-body">
     <section id="content-types">
       <div class="row match-height">
@@ -92,13 +92,13 @@
             <div class="card-body">
               <p class="card-text">
                 Registration Fee:
-                <span class="strikethrough"
+                <!-- <span class="strikethrough"
                   >&#x20B9;{{ workshop.amount + 100 }}</span
-                >&nbsp;<span class="amount">&#x20B9;{{ workshop.amount }}</span>
+                >&nbsp;<span class="amount">&#x20B9;{{ workshop.amount }}</span> -->
               </p>
               <p class="card-text" *ngIf="workshop.resource_person">
-                    Resource Persons :
-                  {{ workshop.resource_person }}
+                Resource Persons :
+                {{ workshop.resource_person }}
               </p>
             </div>
             <div class="card-reveal">
@@ -132,6 +132,8 @@
               class="card-footer border-top-blue-grey border-top-lighten-5 text-muted"
             >
               <span class="float-left"> {{ workshop.event_date | date }}</span>
+              <br />
+              <span class="float-left">Venue: {{ workshop.venue }}</span>
               <span class="float-right">
                 <div *ngIf="registrationEnabled && workshopEnabled">
                   <ng-container *ngIf="user; else notLoggedIn">
