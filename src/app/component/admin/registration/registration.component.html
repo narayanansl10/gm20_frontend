@@ -590,7 +590,7 @@
                         <th>College</th>
                         <th>Email</th>
                         <th>Mobile Number</th>
-                        <th>Issue ID Card</th>
+                        <!-- <th>Issue ID Card</th> -->
                         <th>Info</th>
                         <th *ngIf="role.role_id.name == 'Admin'">Delete</th>
                       </tr>
@@ -602,12 +602,12 @@
                         <td>{{participant.college_id.name}}</td>
                         <td>{{participant.email_id}}</td>
                         <td>{{participant.mobile_number}}</td>
-                        <td>
+                        <!-- <td>
                           <div class="fonticon-wrap icon-shadow icon-shadow-info" data-toggle="modal" data-target="#idModal"
                             (click)="scanQR(participant._id)">
                             <a> <i class="fa fa-id-card fa-2x"></i></a>
                           </div>
-                        </td>
+                        </td> -->
                         <td>
                           <div class="fonticon-wrap icon-shadow icon-shadow-info" data-toggle="modal" data-target="#participantModal"
                             (click)="moreInfo(participant._id)">

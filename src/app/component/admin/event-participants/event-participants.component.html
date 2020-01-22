@@ -38,7 +38,7 @@
                     <div class="form-group">
                       <select
                         class="custom-select"
-                        formControlName="selectedUserId"
+                        formControlName="selected UserId"
                       >
                         <option selected value="" disabled>Participant</option>
                         <option
@@ -58,7 +58,7 @@
                           >
                             <option
                               *ngFor="
-                                let participantStatus of participantStatuss
+                                let participantStatus of participantStatus
                               "
                               value="{{ participantStatus.name }}"
                               >{{ participantStatus.name }}</option
@@ -262,14 +262,14 @@
                       <button (click)="exportAsXLSX()" class="btn btn-success">
                         Generate Excel
                       </button>
-                      <button
+                      <!-- <button
                         data-toggle="modal"
                         data-target="#idModal"
                         (click)="scanID()"
                         class="btn btn-soundcloud"
                       >
                         Scan ID Card
-                      </button>
+                      </button> -->
                     </div>
                     <br />
                     <hr />
@@ -296,7 +296,7 @@
                         </div>
                       </div>
                     </div>
-                    <div class="row">
+                    <!-- <div class="row">
                       <div class="container">
                         <div class="col-12">
                           <div class="btn-group">
@@ -319,7 +319,7 @@
                           </div>
                         </div>
                       </div>
-                    </div>
+                    </div> -->
 
                     <!-- <div class="col-sm-12 col-md-6">
                     <button data-toggle="modal" data-target="#teamModal" class="btn btn-outline-bitbucket">Team
