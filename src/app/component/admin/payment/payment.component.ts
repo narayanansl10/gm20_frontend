@@ -1,26 +1,30 @@
-import { Component, OnInit } from '@angular/core';
-import { PaymentService } from 'src/app/services/payment/payment.service';
-import { ExcelService } from 'src/app/services/excel.service';
-import { Location, DatePipe } from '@angular/common';
-import { EventRegistrationService } from 'src/app/services/eventRegistration/event-registration.service';
+import { Component, OnInit } from "@angular/core";
+import { PaymentService } from "src/app/services/payment/payment.service";
+import { ExcelService } from "src/app/services/excel.service";
+import { Location, DatePipe } from "@angular/common";
+import { EventRegistrationService } from "src/app/services/eventRegistration/event-registration.service";
 
 @Component({
-  selector: 'app-payment',
-  templateUrl: './payment.component.html',
-  styleUrls: ['./payment.component.css'],
+  selector: "app-payment",
+  templateUrl: "./payment.component.html",
+  styleUrls: ["./payment.component.css"],
   providers: [DatePipe]
 })
 export class PaymentComponent implements OnInit {
-
   payedUsers: Array<any>;
   events: Array<any>;
   workshops: Array<any>;
   click: Boolean = false;
   searchText: String = "";
-  constructor(private eventRegister: EventRegistrationService, private payService: PaymentService, private datePipe: DatePipe, private excelService: ExcelService) { }
+  offlinePaymentsClicked = false;
+  constructor(
+    private eventRegister: EventRegistrationService,
+    private payService: PaymentService,
+    private datePipe: DatePipe,
+    private excelService: ExcelService
+  ) {}
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   getDDPayedUsers() {
     this.click = true;
@@ -32,13 +36,13 @@ export class PaymentComponent implements OnInit {
             this.payedUsers.push(user);
           }
         }
+      } else {
       }
-      else {
-      }
-    })
+    });
   }
 
   getOnlinePayedUsers() {
+    this.offlinePaymentsClicked = false;
     this.click = true;
     this.payService.getPaymentDetails().subscribe((response: any) => {
       if (response.success) {
@@ -54,13 +58,13 @@ export class PaymentComponent implements OnInit {
             this.payedUsers.push(user);
           }
         }
+      } else {
       }
-      else {
-      }
-    })
+    });
   }
 
   getOfflinePayedUsers() {
+    this.offlinePaymentsClicked = true;
     this.click = true;
     this.payService.getPaymentDetails().subscribe((response: any) => {
       if (response.success) {
@@ -76,26 +80,26 @@ export class PaymentComponent implements OnInit {
             this.payedUsers.push(user);
           }
         }
+      } else {
       }
-      else {
-      }
-    })
+    });
   }
 
   exportAsXLSX() {
-    var filename = 'Online Payment - ' + this.datePipe.transform(Date.now(), 'dd-MM-yyyy');
+    var filename =
+      "Online Payment - " + this.datePipe.transform(Date.now(), "dd-MM-yyyy");
     var slNo = 1;
     var reportArray: Array<any> = [];
     this.payedUsers.forEach((ele: any) => {
       var reportData: any = [];
-      reportData["Sl. No"] = slNo++
+      reportData["Sl. No"] = slNo++;
       reportData["Name"] = ele.user_id.name;
       reportData["Transaction ID"] = ele.transaction_id;
       reportData["Amount"] = ele.amount;
       reportData["Mobile Number"] = ele.user_id.mobile_number;
       reportData["E Mail ID"] = ele.user_id.email_id;
-      reportArray.push(reportData)
-    })
+      reportArray.push(reportData);
+    });
     this.excelService.exportAsExcelFile(reportArray, filename);
   }
 }
