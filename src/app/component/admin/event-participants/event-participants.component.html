@@ -38,7 +38,7 @@
                     <div class="form-group">
                       <select
                         class="custom-select"
-                        formControlName="selected UserId"
+                        formControlName="selectedUserId"
                       >
                         <option selected value="" disabled>Participant</option>
                         <option
@@ -58,7 +58,7 @@
                           >
                             <option
                               *ngFor="
-                                let participantStatus of participantStatus
+                                let participantStatus of participantStatuss
                               "
                               value="{{ participantStatus.name }}"
                               >{{ participantStatus.name }}</option
@@ -335,7 +335,7 @@
                             <th>Phone No.</th>
                             <th>College</th>
                             <th>Payment</th>
-                            <th>Attendance</th>
+                            <!-- <th>Attendance</th> -->
                             <th>Update Attendance</th>
                             <th>Delete</th>
                           </tr>
@@ -359,7 +359,21 @@
                             <td>
                               <div class="row">
                                 <div class="col-12">
-                                  <select
+                                  <button
+                                    class="btn btn-success"
+                                    *ngIf="participant.participation === 'Absent'"
+                                    (click)="MarkAttendence(participant.user_id._id,event[0]._id,'Present')"
+                                  >
+                                    Mark Present
+                                  </button>
+                                  <button
+                                    class="btn btn-danger"
+                                    *ngIf="participant.participation === 'Present'"
+                                    (click)="MarkAttendence(participant.user_id._id,event[0]._id,'Absent')"
+                                  >
+                                    Mark Absent
+                                  </button>
+                                  <!-- <select
                                     class="custom-select"
                                     [(ngModel)]="currentAttendance"
                                   >
@@ -373,11 +387,11 @@
                                       value="{{ participantStatus.name }}"
                                       >{{ participantStatus.name }}</option
                                     >
-                                  </select>
+                                  </select> -->
                                 </div>
                               </div>
                             </td>
-                            <td>
+                            <!-- <td>
                               <div
                                 class="fonticon-wrap icon-shadow icon-shadow-warning"
                               >
@@ -385,7 +399,7 @@
                                   <i class="la la-upload la-2x"></i
                                 ></a>
                               </div>
-                            </td>
+                            </td> -->
                             <td>
                               <div
                                 class="fonticon-wrap icon-shadow icon-shadow-danger"

@@ -190,4 +190,10 @@ export class EventRegistrationService {
     });
   }
 
+  updateEventRegistrationStatus(userId:String, eventId:String, status:String) {
+    const headers = new Headers();
+    headers.append('Content-Type', 'application/json');
+    return this.http.get(this.app.getUrl(this.baseUrl) + 'UpdateParticipationStatus/' + eventId + '/' + userId + '/' + status);
+  }
+
 }

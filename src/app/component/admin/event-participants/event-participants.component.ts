@@ -222,6 +222,7 @@ export class EventParticipantsComponent implements OnInit {
   getParticipantStatus() {
     this.participantStatusService.readParticipationStatus(0).subscribe((response: any) => {
       this.participantStatuss = response;
+      //console.log(this.participantStatuss);
     });
   }
 
@@ -251,5 +252,10 @@ export class EventParticipantsComponent implements OnInit {
       console.log(this.event);
     });
   }
-
+  MarkAttendence(ParticipantId,EventId,Status){
+    this.eventRegistration.updateEventRegistrationStatus(ParticipantId,EventId,Status).subscribe((response: any) => {
+      console.log(response);
+      this.reload();
+    }) 
+  }
 }

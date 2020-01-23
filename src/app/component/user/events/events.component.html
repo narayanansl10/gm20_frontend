@@ -135,6 +135,11 @@
                             class="btn btn-outline-primary"
                             (click)="selectEvent(event._id)"
                             style="width:100%"
+                            *ngIf = "event.title !== 'Introduction to NI LabVIEW Programming' || 
+          event.title !== 'Developing AI applications with Java' ||
+          event.title !== 'Software Testing using Automated Tools' ||
+          event.title !== 'Alternative fuels- (biodiesel extractions, types and characterizations)' ||
+          event.title !== 'LASER applications in manufacturing industry'">
                           >
                             Add to cart <i class="la la-angle-right"></i>
                           </button>
@@ -191,6 +196,7 @@
                 </span>
               </div>
             </div>
+            
           </div>
         </div>
         <span class="content-header-right col-md-3 col-3">
