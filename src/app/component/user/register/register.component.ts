@@ -57,6 +57,10 @@ export class RegisterComponent implements OnInit {
       year_id: ['', Validators.required]
     });
   }
+  //Close Registrations
+  displayError(){
+    M.toast({ html: 'Registrations Closed !', classes: 'rounded' });
+  }
   //The action performed After the Button is Pressed
   onSubmit(values: NgForm) {
     this.submitted = true;

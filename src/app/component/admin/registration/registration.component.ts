@@ -371,7 +371,7 @@ export class RegistrationComponent implements OnInit {
   }
 
   exportCollegeWiseWorkshopCount() {
-    var filename = 'College wise Event Count - ' + this.datePipe.transform(Date.now(), 'dd-MM-yyyy');
+    var filename = 'College wise Workshop Count - ' + this.datePipe.transform(Date.now(), 'dd-MM-yyyy');
     var reportArray: Array<any> = [];
     var responseArray = []
     this.reportserviceService.getCollegeCountForWorkshop().subscribe((res: any) => {

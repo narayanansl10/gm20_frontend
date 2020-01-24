@@ -10,6 +10,7 @@ import { QrScannerComponent } from 'angular2-qrscanner';
 import { QrService } from 'src/app/services/qr/qr.service';
 import { UserService } from 'src/app/services/user/user.service';
 import { CertificateService } from 'src/app/services/certificate/certificate.service';
+import { RoleUserService } from 'src/app/services/role_user/role-user.service';
 
 
 declare var M: any;
@@ -22,14 +23,14 @@ declare var M: any;
   encapsulation: ViewEncapsulation.None
 })
 export class EventParticipantsComponent implements OnInit {
-
+  role: any;
   event_id: String;
   currentAttendance: String;
   event: any;
   isParticipantEntry = true;
   @ViewChild(QrScannerComponent) qrScannerComponent: QrScannerComponent;
 
-  constructor(private certificateService: CertificateService, private userService: UserService, private qrService: QrService, private datePipe: DatePipe, private participantStatusService: ParticipationstatusService, private excelService: ExcelService, private eventRegistration: EventRegistrationService, public authService: AuthService, private formBuilder: FormBuilder, private route: ActivatedRoute, private location: Location) {
+  constructor(private certificateService: CertificateService, private userService: UserService, private qrService: QrService, private datePipe: DatePipe, private participantStatusService: ParticipationstatusService, private excelService: ExcelService, private eventRegistration: EventRegistrationService, public authService: AuthService, private formBuilder: FormBuilder, private route: ActivatedRoute, private location: Location,  private roleUserService: RoleUserService) {
 
   }
 
@@ -54,6 +55,7 @@ export class EventParticipantsComponent implements OnInit {
     this.getParticipantStatus();
     this.searchText = "";
     this.getUsers();
+    this.checkForRole()
   }
 
   loadCertificates() {
@@ -258,5 +260,16 @@ export class EventParticipantsComponent implements OnInit {
       console.log(response);
       this.reload();
     }) 
+  }
+
+  checkForRole() {
+    this.roleUserService.readRoleUserById(JSON.parse(localStorage.getItem('user')).id).subscribe((response: any) => {
+      if (response.success) {
+        this.role = response.msg[0];
+      }
+      else {
+        M.toast({ html: response.msg, classes: 'roundeds' });
+      }
+    })
   }
 }

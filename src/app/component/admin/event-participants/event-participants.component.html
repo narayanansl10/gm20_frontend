@@ -337,7 +337,7 @@
                             <th>Payment</th>
                             <!-- <th>Attendance</th> -->
                             <th>Update Attendance</th>
-                            <th>Delete</th>
+                            <th *ngIf="role.role_id.name == 'Admin'">Delete</th>
                           </tr>
                         </thead>
                         <tbody>
@@ -401,7 +401,7 @@
                               </div>
                             </td> -->
                             <td>
-                              <div
+                              <div *ngIf="role.role_id.name == 'Admin'"
                                 class="fonticon-wrap icon-shadow icon-shadow-danger"
                                 (click)="deleteParticipant(participant._id)"
                               >
